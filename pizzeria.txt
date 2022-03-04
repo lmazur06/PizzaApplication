@@ -1,0 +1,169 @@
+POST http://localhost/api/v1/orders
+REQUEST BODY:
+{
+    "pizzas":[
+        {
+            "id":1,
+            "sizeId":2,
+            "count":2
+        },
+        {
+            "id":2,
+            "sizeId":4,
+            "count":1
+        }
+    ],
+    "person":{
+        "name": "Jan Kowalski",
+        "phone":"123456789",
+        "address":"Wiśniowa 56"
+    }
+}
+REQUEST PARAMS: BRAK
+REQUEST HEADERS: BRAK
+RESPONSE BODY:
+{
+    "order-id":"52gi8fhn"
+}
+
+GET http://localhost/api/v1/orders?status=NEW
+REQUEST BODY: BRAK
+REQUEST PARAMS: BRAK
+REQUEST HEADERS Access-Token: {x1v2}
+RESPONSE BODY:
+{
+    "orders":[
+        {
+            "id":"52gi8fhn",
+            "status":"READY",
+            "pizzas":[
+                {
+                    "id":1,
+                    "sizeId":2,
+                    "count":2
+                },
+                {
+                    "id":2,
+                    "sizeId":4,
+                    "count":1
+                }
+            ],
+            "person":{
+                "name": "Jan Kowalski",
+                "phone":"123456789",
+                "address":"Wiśniowa 56"
+            }
+        }
+    ]
+}
+
+DELETE http://localhost/api/v1/orders/52gi8fhn
+REQUEST BODY: BRAK
+REQUEST PARAMS: BRAK
+REQUEST HEADERS Acces-Token: {x1v1}
+RESPONSE BODY: BRAK
+
+PUT http://localhost/api/v1/orders/52gi8fhn
+REQUEST BODY:
+{
+    "status":"READY",
+    "pizzas":[
+        {
+            "id":1,
+            "sizeId":2,
+            "count":2
+        },
+        {
+            "id":2,
+            "sizeId":4,
+            "count":1
+        }
+    ],
+    "person":{
+        "name": "Jan Kowalski",
+        "phone":"123456789",
+        "address":"Wiśniowa 56"
+    }
+}
+REQUEST PARAMS: BRAK
+REQUEST HEADERS: Acces-Token: {x1v1}
+RESPONSE BODY:
+{
+    "id":"52gi8fhn"
+    "status":"READY",
+    "pizzas":[
+        {
+            "id":1,
+            "sizeId":2,
+            "count":2
+        },
+        {
+            "id":2,
+            "sizeId":4,
+            "count":1
+        }
+    ],
+    "person":{
+        "name": "Jan Kowalski",
+        "phone":"123456789",
+        "address":"Wiśniowa 56"
+    }
+}
+
+7. Dodanie nowej pozycji pizzy
+POST http://localhost/api/v1/pizzas
+REQUEST BODY:
+{
+    "name":"Farmerska",
+    "sizes":[
+        {
+            "id":10,
+            "size":"S",
+            "price":23.00
+        },
+        {
+            "id":11,
+            "size":"M",
+            "price":24.00
+        },
+        {
+            "id":12,
+            "size":"L",
+            "price":25.00
+        }
+    ]
+}
+REQUEST PARAMS: BRAK
+REQUEST HEADERS: Acces-Token: {x1v2}
+
+8. Aktualizacja konkretnej pozycji pizzy
+PUT http://localhost/api/v1/pizzas/2
+REQUEST BODY:
+{
+    "name":"Farmerska",
+    "sizes":[
+        {
+            "id":10,
+            "size":"S",
+            "price":24.00
+        },
+        {
+            "id":11,
+            "size":"M",
+            "price":27.00
+        },
+        {
+            "id":12,
+            "size":"L",
+            "price":30.00
+        }
+    ]
+}
+REQUEST PARAMS: BRAK
+REQUEST HEADERS: Acces-Token: {x1v2}
+
+9. Aktualizacja konkretnej pozycji pizzy
+DELETE http://localhost/api/v1/pizzas/2
+REQUEST BODY: BRAK
+REQUEST PARAMS: BRAK
+REQUEST HEADERS: Acces-Token: {x1v2}
